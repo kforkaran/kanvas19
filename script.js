@@ -62,7 +62,6 @@ if (window.innerWidth > 800) {
             translateY: 2.4,
             duration: 250
         }) //circle4
-
         .add({
             targets: '#circle4',
             scale: 500,
@@ -92,25 +91,29 @@ anime({
     targets: '#Title .y',
     strokeDashoffset: [anime.setDashoffset, 0],
     easing: 'easeInOutSine',
-    duration: 3200,
+    duration: 2200,
     delay: function (el, i) {
         return i * 250;
-    }
+    },
+    loop: 3,
+    direction: 'alternate',
 });
 
 //icons
 let t2 = anime.timeline({
-    easing: 'easeInOutSine',
+    easing: 'easeOutElastic',
     duration: 500
 });
 
 t2.add({
     targets: '#icon1',
     duration: 900,
+    opacity: [0, 100],
     translateX: 100
 }).add({
     targets: '#icon2',
     duration: 900,
+    opacity: [0, 100],
     translateX: 100
 })
 
@@ -120,7 +123,8 @@ anime({
     borderRadius: ['0%', '50%'],
     easing: 'easeInOutQuad',
     loop: true,
-    duration: 2000,
+    translateY: 10,
+    duration: 3000,
     delay: 500,
     direction: 'alternate',
     rotate: [0, 360],
@@ -129,5 +133,85 @@ anime({
 
 //onclick circle one
 
-const circleOne = document.querySelector('#circle1');
-console.log(circleOne)
+document.querySelector('.close').style.display = "none";
+
+document.querySelector('#circle1').addEventListener('click', () => {
+
+    document.querySelector('.close').style.display = "block";
+
+    document.querySelector('#Title').style.display = 'none';
+
+    anime({
+        targets: `#circle1`,
+        scale: 2000,
+        duration: 500,
+    });
+})
+
+document.querySelector('#circle2').addEventListener('click', () => {
+
+    document.querySelector('.close').style.display = "block";
+
+    document.querySelector('#Title').style.display = 'none';
+
+    anime({
+        targets: `#circle2`,
+        scale: 2000,
+        duration: 500,
+    });
+})
+document.querySelector('#circle3').addEventListener('click', () => {
+
+    document.querySelector('.close').style.display = "block";
+
+    document.querySelector('#Title').style.display = 'none';
+
+    anime({
+        targets: `#circle3`,
+        scale: 2000,
+        duration: 500,
+    });
+})
+document.querySelector('#circle4').addEventListener('click', () => {
+
+    document.querySelector('.close').style.display = "block";
+
+    document.querySelector('#Title').style.display = 'none';
+
+    anime({
+        targets: `#circle4`,
+        scale: 2000,
+        duration: 500,
+    });
+})
+
+document.querySelector('.close').addEventListener('click', () => {
+    document.querySelector('.close').style.display = "none";
+
+    document.querySelector('#Title').style.display = 'block';
+    const clickT = anime.timeline({
+        duration: 400,
+        easing: 'easeInOutSine'
+    })
+
+    clickT.add({
+            targets: `#circle1 #circle2`,
+            scale: 60,
+            duration: 200,
+        })
+        .add({
+            targets: `#circle1 #circle2`,
+            scale: 60,
+            translateX: 11,
+            duration: 200,
+        }).add({
+            targets: '#Title .y',
+            strokeDashoffset: [anime.setDashoffset, 0],
+            easing: 'easeInOutSine',
+            duration: 2200,
+            delay: function (el, i) {
+                return i * 250;
+            }
+        })
+
+})

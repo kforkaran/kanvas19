@@ -1,5 +1,6 @@
 body {
     background: rgb(31, 29, 29);
+    overflow: hidden;
 }
 
 
@@ -12,6 +13,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
+    z-index: 0;
     transform: translate(-50%, -50%);
 
 }
@@ -27,6 +29,7 @@ body {
     transform: translate(-50%, -50%);
 
 }
+
 
 #circle3 {
     width: 1px;
@@ -90,8 +93,18 @@ body {
 }
 
 .corner-logo {
-    background: rgb(255, 57, 74);
+    background: rgb(247, 234, 52);
     width: 40px;
     height: 40px;
+    border-radius: 10px;
     margin: 20px;
+}
+
+.close {
+    color: #fff;
+    font-size: 4em;
+    position: absolute;
+    cursor: pointer;
+    font-weight: 900;
+    z-index: 2;
 }
