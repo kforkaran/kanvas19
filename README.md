@@ -1,15 +1,12 @@
 # kanvas19
-And event landingpage for Kanvas19😎
+An event landingpage for Kanvas19😎
 
 #### How to run👨‍💻
 clone the repo and run the following commands
 ```
 npm install
-npm run build
+npm run start
 ```
-Then run on local server
-or In any fancy way you can think of 🧠.
-
 #### Libraries used
 - [Animejs](https://animejs.com/)
 
