@@ -1,3 +1,6 @@
+import anime from 'animejs/lib/anime.es';
+import "./style.css";
+
 if (window.innerWidth > 800) {
 
     let t1 = anime.timeline({

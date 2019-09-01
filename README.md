@@ -2,11 +2,14 @@
 And event landingpage for Kanvas19😎
 
 #### How to run👨‍💻
+clone the repo and run the following commands
 ```
-clone the repo
-And run on local server
+npm install
+npm run build
+```
+Then run on local server
 or In any fancy way you can think of 🧠.
-```
+
 #### Libraries used
 - [Animejs](https://animejs.com/)
 
