@@ -1,5 +1,6 @@
 body {
     background: rgb(31, 29, 29);
+    margin: 0;
     overflow: hidden;
 }
 
@@ -8,7 +9,7 @@ body {
 #circle1 {
     width: 1px;
     height: 1px;
-    border-radius: 100%;
+    border-radius: 50%;
     background-color: rgb(166, 57, 255);
     position: absolute;
     top: 50%;
@@ -21,7 +22,7 @@ body {
 #circle2 {
     width: 1px;
     height: 1px;
-    border-radius: 100%;
+    border-radius: 50%;
     background-color: rgb(255, 57, 74);
     position: absolute;
     top: 50%;
@@ -30,23 +31,10 @@ body {
 
 }
 
-
 #circle3 {
     width: 1px;
     height: 1px;
-    border-radius: 100%;
-    background-color: rgb(252, 228, 123);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-}
-
-#circle3 {
-    width: 1px;
-    height: 1px;
-    border-radius: 100%;
+    border-radius: 50%;
     background-color: rgb(105, 218, 111);
     position: absolute;
     top: 50%;
@@ -58,7 +46,7 @@ body {
 #circle4 {
     width: 1px;
     height: 1px;
-    border-radius: 100%;
+    border-radius: 50%;
     background-color: rgb(252, 228, 123);
     position: absolute;
     top: 50%;
