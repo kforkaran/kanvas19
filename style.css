@@ -96,3 +96,10 @@ body {
     font-weight: 900;
     z-index: 2;
 }
+
+#circle1 p {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
