@@ -137,32 +137,32 @@ anime({
 
 //onclick circles
 
-const circles = ['1', '2', '3', '4'];
 document.querySelector('.close').style.display = 'none';
-let zoom1 = anime({
-  targets: '#circle1',
-  scale: 2000,
-  duration: 250,
-  autoplay: false
-});
 
-let zoomOut = anime({
-  targets: '#circle1',
-  scale: 60,
-  translateX: 11,
-  duration: 250,
-  autoplay: false
-})
+const circles = document.getElementsByClassName('circle');
+let target = '#circle1';
 
-document.querySelector('#circle1').onclick = () => {
-  zoom1.play();
-  console.log('hgh')
-  document.getElementById('Title').style.display = 'none';
-  document.querySelector('.close').style.display = 'block';
-};
+for(let i = 0; i < circles.length; i++) {
+  circles[i].onclick = () => {
+    target = '#circle' + (i + 1);
+    anime({
+      targets: target,
+      scale: 50,
+      translateX: { value: 'calc(50vw - 3.5em)', duration: 0 },
+      duration: 1000,
+    });
+    document.getElementById('Title').style.display = 'none';
+    document.querySelector('.close').style.display = 'block';
+  };
+}
 
 document.querySelector('.close').onclick = () => {
-  zoomOut.play();
+  anime({
+    targets: target,
+    scale: [50, 1],
+    translateX: { value: 'calc(50vw - 3.5em)', duration: 0 },
+    duration: 1000,
+  });
   document.getElementById('Title').style.display = 'block';
   document.querySelector('.close').style.display = 'none';
-}
+};
