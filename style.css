@@ -36,13 +36,14 @@ body {
     left: 50%;
     transform: translate(-55%, -50%);
     width: 50%;
+    white-space: pre;
     color: rgb(247, 234, 52);
 }
 
 .social-icons {
     position: absolute;
     top: 80%;
-    left: -5%;
+    left: 2%;
 }
 
 .icon {

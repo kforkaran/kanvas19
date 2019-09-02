@@ -113,12 +113,12 @@ t2.add({
   targets: '#icon1',
   duration: 900,
   opacity: [0, 100],
-  translateX: 100
+  translateX: [-100, 0]
 }).add({
   targets: '#icon2',
   duration: 900,
   opacity: [0, 100],
-  translateX: 100
+  translateX: [-100, 0]
 });
 
 //corner-logo
