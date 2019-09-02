@@ -28,7 +28,9 @@ if (window.innerWidth > 800) {
     })
     .add({
       targets: '#camera',
-      translateX: -128,
+      translateY: { value: '-50%', duration: 0 },
+      opacity: 1,
+      translateX: [40, '-50%'],
       duration: 250
     })
     //circle2
@@ -146,40 +148,6 @@ anime({
 
 document.querySelector('.close').style.display = 'none';
 
-const circles = document.getElementsByClassName('circle');
-let target = '#circle1';
-
-
-for(let i = 0; i < circles.length; i++) {
-  circles[i].onclick = () => {
-    target = '#circle' + (i + 1);
-    anime({
-      targets: target,
-      scale: 50,
-      translateX: { value: 'calc(50vw - 3.5em)', duration: 0 },
-      duration: 1000,
-    });
-    document.getElementById('Title').style.display = 'none';
-    document.querySelector('.close').style.display = 'block';
-  };
-}
-
-const cameraZoom = anime({
-  targets: '#camera',
-  scale: 40,
-  translateX: -11,
-  translateY: -2.4,
-  duration: 250,
-  autoplay: false
-})
-const cameraOffZoom = anime({
-  targets: '#camera',
-  scale: 1,
-  translateX: -128,
-  duration: 250,
-  autoplay: false
-})
-
 const cameraStroke = anime({
   targets: '#camera .p',
   strokeDashoffset: [anime.setDashoffset, 0],
@@ -203,26 +171,28 @@ const cameraContent = anime({
   duration: 1200,
   delay: (el, i) => 500 + 30 * i,
   autoplay: false
-})
+});
 
 document.querySelector('.ml12').style.display = 'none';
 document.querySelector('#camera').onclick = () => {
-  zoom1.play();
-  console.log('hgh')
+  anime({
+    targets: '#circle1',
+    scale: 20,
+    translateX: { value: 'calc(50vw - 3.5em)', duration: 0 },
+    duration: 1000,
+  });
   document.getElementById('Title').style.display = 'none';
-  document.querySelector('#camera').style.fill = 'rgba(0,0,0,0)'
+  document.querySelector('#camera').style.fill = 'rgba(0,0,0,0)';
   document.querySelector('.close').style.display = 'block';
   document.querySelector('.ml12').style.display = 'block';
-  cameraZoom.play();
   cameraStroke.play();
   cameraContent.play();
-
 };
 
 
 document.querySelector('.close').onclick = () => {
   anime({
-    targets: target,
+    targets: '#circle1',
     scale: [50, 1],
     translateX: { value: 'calc(50vw - 3.5em)', duration: 0 },
     duration: 1000,
@@ -230,5 +200,4 @@ document.querySelector('.close').onclick = () => {
   document.getElementById('Title').style.display = 'block';
   document.querySelector('.close').style.display = 'none';
   document.querySelector('.ml12').style.display = 'none';
-  cameraOffZoom.play();
 };
