@@ -131,7 +131,7 @@ anime({
 //onclick circles
 
 const circles = ['1', '2', '3', '4'];
-
+document.querySelector('.close').style.display = 'none';
 let zoom1 = anime({
   targets: '#circle1',
   scale: 2000,
@@ -147,6 +147,15 @@ let zoomOut = anime({
   autoplay: false
 })
 
-document.querySelector('#circle1').onclick = zoom1.play;
+document.querySelector('#circle1').onclick = () => {
+  zoom1.play();
+  console.log('hgh')
+  document.getElementById('Title').style.display = 'none';
+  document.querySelector('.close').style.display = 'block';
+};
 
-document.querySelector('.close').onclick = zoomOut.play;
+document.querySelector('.close').onclick = () => {
+  zoomOut.play();
+  document.getElementById('Title').style.display = 'block';
+  document.querySelector('.close').style.display = 'none';
+}
