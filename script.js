@@ -9,74 +9,81 @@ if (window.innerWidth > 800) {
 
   t1.add({
       targets: '#circle1',
-      scale: 500,
+      translateX: { value: '-50%', duration: 0 },
+      translateY: { value: '-50%', duration: 0 },
+      scale: [0, 9],
       duration: 500
     })
     .add({
       targets: '#circle1',
-      scale: 60,
+      scale: 1,
       duration: 500,
       delay: 700
     })
     .add({
       targets: '#circle1',
-      scale: 60,
-      translateX: 11,
+      scale: 1,
+      translateX: [0, 'calc(50vw - 3.5em)'],
       duration: 250
     }) //circle2
     .add({
       targets: '#circle2',
-      scale: 500,
+      translateX: { value: '-50%', duration: 0 },
+      translateY: { value: '-50%', duration: 0 },
+      scale: [0, 9],
       duration: 500
     })
     .add({
       targets: '#circle2',
-      scale: 60,
+      scale: 1,
       duration: 500,
       delay: 700
     })
     .add({
       targets: '#circle2',
-      scale: 60,
-      translateX: 11,
-      translateY: 1.2,
+      scale: 1,
+      translateX: [0, 'calc(50vw - 3.5em)'],
+      translateY: '60%',
       duration: 250
     }) //circle3
-
     .add({
       targets: '#circle3',
-      scale: 500,
+      translateX: { value: '-50%', duration: 0 },
+      translateY: { value: '-50%', duration: 0 },
+      scale: [0, 9],
       duration: 500
     })
     .add({
       targets: '#circle3',
-      scale: 60,
+      scale: 1,
       duration: 500,
       delay: 700
     })
     .add({
       targets: '#circle3',
-      scale: 60,
-      translateX: 11,
-      translateY: 2.4,
+      scale: 1,
+      translateX: [0, 'calc(50vw - 3.5em)'],
+      translateY: '170%',
       duration: 250
     }) //circle4
     .add({
       targets: '#circle4',
-      scale: 500,
+      translateX: { value: '-50%', duration: 0 },
+      translateY: { value: '-50%', duration: 0 },
+      scale: [0, 9],
       duration: 500
     })
     .add({
       targets: '#circle4',
-      scale: 60,
+      scale: 1,
       duration: 500,
       delay: 700
     })
     .add({
       targets: '#circle4',
-      scale: 60,
-      translateX: 11,
-      translateY: 3.6,
+      scale: 1,
+      translateX: [0, 'calc(50vw - 3.5em)'],
+      translateY: '280%',
       duration: 250
     });
 } else {
