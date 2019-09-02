@@ -23,7 +23,13 @@ if (window.innerWidth > 800) {
       scale: 60,
       translateX: 11,
       duration: 250
-    }) //circle2
+    })
+    .add({
+      targets: '#camera',
+      translateX: -128,
+      duration: 250
+    })
+    //circle2
     .add({
       targets: '#circle2',
       scale: 500,
@@ -78,7 +84,8 @@ if (window.innerWidth > 800) {
       translateX: 11,
       translateY: 3.6,
       duration: 250
-    });
+    })
+
 } else {
   document.getElementById('circle1').innerHTML = 'Mobile';
 }
@@ -130,7 +137,6 @@ anime({
 
 //onclick circles
 
-const circles = ['1', '2', '3', '4'];
 document.querySelector('.close').style.display = 'none';
 let zoom1 = anime({
   targets: '#circle1',
@@ -147,15 +153,65 @@ let zoomOut = anime({
   autoplay: false
 })
 
-document.querySelector('#circle1').onclick = () => {
+const cameraZoom = anime({
+  targets: '#camera',
+  scale: 40,
+  translateX: -11,
+  translateY: -2.4,
+  duration: 250,
+  autoplay: false
+})
+const cameraOffZoom = anime({
+  targets: '#camera',
+  scale: 1,
+  translateX: -128,
+  duration: 250,
+  autoplay: false
+})
+
+const cameraStroke = anime({
+  targets: '#camera .p',
+  strokeDashoffset: [anime.setDashoffset, 0],
+  duration: 2200,
+  delay: function (el, i) {
+    return i * 250;
+  },
+  loop: true,
+  direction: 'alternate',
+  autoplay: false
+});
+
+var textWrapper = document.querySelector('.ml12');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+const cameraContent = anime({
+  targets: '.ml12 .letter',
+  translateX: [40, 0],
+  translateZ: 0,
+  opacity: [0, 1],
+  duration: 1200,
+  delay: (el, i) => 500 + 30 * i,
+  autoplay: false
+})
+
+document.querySelector('.ml12').style.display = 'none';
+document.querySelector('#camera').onclick = () => {
   zoom1.play();
   console.log('hgh')
   document.getElementById('Title').style.display = 'none';
+  document.querySelector('#camera').style.fill = 'rgba(0,0,0,0)'
   document.querySelector('.close').style.display = 'block';
+  document.querySelector('.ml12').style.display = 'block';
+  cameraZoom.play();
+  cameraStroke.play();
+  cameraContent.play();
+
 };
 
 document.querySelector('.close').onclick = () => {
   zoomOut.play();
   document.getElementById('Title').style.display = 'block';
   document.querySelector('.close').style.display = 'none';
+  document.querySelector('.ml12').style.display = 'none';
+  cameraOffZoom.play();
 }
