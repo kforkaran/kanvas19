@@ -44,6 +44,7 @@ body {
     position: absolute;
     top: 80%;
     left: 2%;
+    z-index: 3;
 }
 
 .icon {
@@ -63,6 +64,7 @@ body {
     height: 40px;
     border-radius: 10px;
     margin: 20px;
+    z-index: 3;
 }
 
 .close {
@@ -83,7 +85,7 @@ body {
     opacity: 0;
 }
 
-.ml12 {
+.photography {
     font-weight: 200;
     font-size: 1.8em;
     color: white;
@@ -92,7 +94,8 @@ body {
     letter-spacing: 0.5em;
 }
 
-.ml12 .letter {
+.photography .letter {
     display: inline-block;
+    z-index: 3;
     line-height: 1em;
 }
