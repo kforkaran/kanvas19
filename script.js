@@ -1,82 +1,91 @@
 import anime from 'animejs/lib/anime.es';
 import './style.css';
 
-if (window.innerWidth > 800) {
-  let t1 = anime.timeline({
-    easing: 'easeInOutSine',
-    duration: 1250
-  });
+let t1 = anime.timeline({
+  easing: 'easeInOutSine',
+  duration: 1250
+});
 
-  t1.add({
+t1.add({
+  targets: '#circle1',
+  translateX: { value: '-50%', duration: 0 },
+  translateY: { value: '-50%', duration: 0 },
+  scale: [0, 9],
+  duration: 500
+})
+  .add({
     targets: '#circle1',
+    scale: 1,
+    duration: 500,
+    delay: 700
+  })
+  .add({
+    targets: '#circle1',
+    scale: 1,
+    translateX: [0, 'calc(50vw - 4.8em)'],
+    duration: 250
+  })
+  .add({
+    targets: '#camera',
+    translateY: { value: '-50%', duration: 0 },
+    opacity: 1,
+    translateX: [40, '-50%'],
+    duration: 250
+  }) //circle2
+  .add({
+    targets: '#circle2',
     translateX: { value: '-50%', duration: 0 },
     translateY: { value: '-50%', duration: 0 },
     scale: [0, 9],
     duration: 500
   })
-    .add({
-      targets: '#circle1',
-      scale: 1,
-      duration: 500,
-      delay: 700
-    })
-    .add({
-      targets: '#circle1',
-      scale: 1,
-      translateX: [0, 'calc(50vw - 4.8em)'],
-      duration: 250
-    })
-    .add({
-      targets: '#camera',
-      translateY: { value: '-50%', duration: 0 },
-      opacity: 1,
-      translateX: [40, '-50%'],
-      duration: 250
-    })
-    //circle2
-    .add({
-      targets: '#circle2',
-      translateX: { value: '-50%', duration: 0 },
-      translateY: { value: '-50%', duration: 0 },
-      scale: [0, 9],
-      duration: 500
-    })
-    .add({
-      targets: '#circle2',
-      scale: 1,
-      duration: 500,
-      delay: 700
-    })
-    .add({
-      targets: '#circle2',
-      scale: 1,
-      translateX: [0, 'calc(50vw - 4.8em)'],
-      translateY: '60%',
-      duration: 250
-    }) //circle3
-    .add({
-      targets: '#circle3',
-      translateX: { value: '-50%', duration: 0 },
-      translateY: { value: '-50%', duration: 0 },
-      scale: [0, 9],
-      duration: 500
-    })
-    .add({
-      targets: '#circle3',
-      scale: 1,
-      duration: 500,
-      delay: 700
-    })
-    .add({
-      targets: '#circle3',
-      scale: 1,
-      translateX: [0, 'calc(50vw - 4.8em)'],
-      translateY: '170%',
-      duration: 250
-    });
-} else {
-  document.getElementById('circle1').innerHTML = 'Mobile';
-}
+  .add({
+    targets: '#circle2',
+    scale: 1,
+    duration: 500,
+    delay: 700
+  })
+  .add({
+    targets: '#circle2',
+    scale: 1,
+    translateX: [0, 'calc(50vw - 4.8em)'],
+    translateY: '60%',
+    duration: 250
+  })
+  .add({
+    targets: '#code',
+    translateY: { value: '-50%', duration: 0 },
+    opacity: 1,
+    translateX: [40, '-50%'],
+    duration: 250
+  }) //circle3
+  .add({
+    targets: '#circle3',
+    translateX: { value: '-50%', duration: 0 },
+    translateY: { value: '-50%', duration: 0 },
+    scale: [0, 9],
+    duration: 500
+  })
+  .add({
+    targets: '#circle3',
+    scale: 1,
+    duration: 500,
+    delay: 700
+  })
+  .add({
+    targets: '#circle3',
+    scale: 1,
+    translateX: [0, 'calc(50vw - 4.8em)'],
+    translateY: '170%',
+    duration: 250
+  })
+  .add({
+    targets: '#design',
+    translateY: { value: '-50%', duration: 0 },
+    opacity: 1,
+    translateX: [40, '-50%'],
+    duration: 250
+  });
 
 //title
 anime({
@@ -84,9 +93,7 @@ anime({
   strokeDashoffset: [anime.setDashoffset, 0],
   easing: 'easeInOutSine',
   duration: 1900,
-  delay: function(el, i) {
-    return i * 250;
-  },
+  delay: (el, i) => i * 250,
   loop: 3,
   direction: 'alternate'
 });
@@ -129,62 +136,68 @@ anime({
 document.querySelector('.close').style.display = 'none';
 document.querySelector('.photography').style.display = 'none';
 
-const cameraStroke = anime({
-  targets: '#camera .p',
-  strokeDashoffset: [anime.setDashoffset, 0],
-  duration: 2200,
-  delay: function(el, i) {
-    return i * 250;
-  },
-  easing: 'easeInCirc',
-  loop: true,
-  direction: 'alternate',
-  autoplay: false
-});
 
-var textWrapper = document.querySelector('.photography');
+const textWrapper = document.querySelector('.photography');
 textWrapper.innerHTML = textWrapper.textContent.replace(
   /\S/g,
   "<span class='letter'>$&</span>"
 );
 
-const cameraContent = anime({
-  targets: '.photography .letter',
-  translateX: [40, 0],
-  translateZ: 0,
-  opacity: [0, 1],
-  duration: 1200,
-  delay: (el, i) => 500 + 30 * i,
-  autoplay: false
-});
+const targets = [
+  { id: '#circle1', icon: '#camera', heading: '.photography', svgclass: ' .p' },
+  { id: '#circle2', icon: '#code', heading: '.photography', svgclass: ' .q' },
+  { id: '#circle3', icon: '#design', heading: '.photography', svgclass: ' .a' }
+];
 
-document.querySelector('#camera').onclick = () => {
+let target;
+
+const open = element => {
+  target = targets[element];
   anime({
-    targets: '#circle1',
+    targets: target.id,
     scale: 50,
     translateX: { value: 'calc(50vw - 4.8em)', duration: 0 },
     duration: 250,
     easing: 'easeInCirc'
   });
   document.getElementById('Title').style.display = 'none';
-  document.querySelector('#camera').style.fill = 'rgba(0,0,0,0)';
   document.querySelector('.close').style.display = 'block';
-  document.querySelector('.photography').style.display = 'block';
-  document.querySelector('#circle1').style.zIndex = '2';
-  cameraStroke.play();
-  cameraContent.play();
+  document.querySelector(target.heading).style.display = 'block';
+  document.querySelector(target.id).style.zIndex = '2';
+  anime({
+    targets: target.icon + target.svgclass,
+    strokeDashoffset: [anime.setDashoffset, 0],
+    duration: 2200,
+    delay: (el, i) => i * 250,
+    easing: 'easeInCirc',
+    loop: true,
+    direction: 'alternate',
+  });
+  anime({
+    targets: target.heading + ' .letter',
+    translateX: [40, 0],
+    translateZ: 0,
+    opacity: [0, 1],
+    duration: 1200,
+    delay: (el, i) => 500 + 30 * i,
+  });
 };
 
-document.querySelector('.close').onclick = () => {
+const close = () => {
   anime({
-    targets: '#circle1',
+    targets: target.id,
     scale: [50, 1],
     translateX: { value: 'calc(50vw - 4.8em)', duration: 0 },
     duration: 250,
     easing: 'easeOutCirc'
   });
-  document.querySelector('#circle1').style.zIndex = '0';
+  document.querySelector(target.id).style.zIndex = '0';
   document.getElementById('Title').style.display = 'block';
   document.querySelector('.close').style.display = 'none';
-  document.querySelector('.photography').style.display = 'none';
+  document.querySelector(target.heading).style.display = 'none';
 };
+
+document.querySelector('#circle1').onclick = function () { open(0); };
+document.querySelector('#circle2').onclick = function () { open(1); };
+document.querySelector('#circle3').onclick = function () { open(2); };
+document.querySelector('.close').onclick = close;

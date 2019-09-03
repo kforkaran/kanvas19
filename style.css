@@ -45,13 +45,13 @@ body {
     z-index: 3;
 }
 
-.icon {
+.social-icon {
     color: #fff;
     font-size: 1.5em;
     padding: 10px;
 }
 
-.icon:hover {
+.social-icon:hover {
     color: rgb(247, 234, 52);
 
 }
@@ -65,7 +65,7 @@ body {
     z-index: 3;
 }
 
-.close-style {
+.close {
     color: #fff;
     font-size: 4em;
     position: absolute;
@@ -75,7 +75,7 @@ body {
     z-index: 2;
 }
 
-#camera {
+.event-icon {
     width: 35px;
     position: relative;
     top: 50%;
@@ -96,16 +96,4 @@ body {
     display: inline-block;
     z-index: 3;
     line-height: 1em;
-}
-
-#code {
-    width: 35px;
-}
-
-#design {
-    width: 35px;
-}
-
-#caption {
-    width: 35px;
 }
