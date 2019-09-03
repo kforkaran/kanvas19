@@ -113,7 +113,7 @@ anime({
 
 //icons social media
 let t2 = anime.timeline({
-  easing: 'easeOutElastic',
+  easing: 'easeInOutExpo',
   duration: 500
 });
 
@@ -156,6 +156,7 @@ const cameraStroke = anime({
   delay: function(el, i) {
     return i * 250;
   },
+  easing: 'easeInCirc',
   loop: true,
   direction: 'alternate',
   autoplay: false
