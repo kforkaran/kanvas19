@@ -8,23 +8,12 @@ let t1 = anime.timeline({
 
 t1.add({
   targets: '#circle1',
-  translateX: { value: '-50%', duration: 0 },
-  translateY: { value: '-50%', duration: 0 },
-  scale: [0, 9],
-  duration: 500
+  keyframes: [
+    { translateX: 0, translateY: 0, scale: [0, 9], duration: 500 },
+    { scale: 1, duration: 500, delay: 700 },
+    { translateX: 'calc(50vw - 4.8em)', duration: 250 }
+  ],
 })
-  .add({
-    targets: '#circle1',
-    scale: 1,
-    duration: 500,
-    delay: 700
-  })
-  .add({
-    targets: '#circle1',
-    scale: 1,
-    translateX: [0, 'calc(50vw - 4.8em)'],
-    duration: 250
-  })
   .add({
     targets: '#camera',
     translateY: { value: '-50%', duration: 0 },
@@ -34,23 +23,11 @@ t1.add({
   }) //circle2
   .add({
     targets: '#circle2',
-    translateX: { value: '-50%', duration: 0 },
-    translateY: { value: '-50%', duration: 0 },
-    scale: [0, 9],
-    duration: 500
-  })
-  .add({
-    targets: '#circle2',
-    scale: 1,
-    duration: 500,
-    delay: 700
-  })
-  .add({
-    targets: '#circle2',
-    scale: 1,
-    translateX: [0, 'calc(50vw - 4.8em)'],
-    translateY: '60%',
-    duration: 250
+    keyframes: [
+      { translateX: 0, translateY: 0, scale: [0, 9], duration: 500 },
+      { scale: 1, duration: 500, delay: 700 },
+      { translateX: 'calc(50vw - 4.8em)', translateY: '110%', duration: 250 }
+    ],
   })
   .add({
     targets: '#code',
@@ -61,23 +38,11 @@ t1.add({
   }) //circle3
   .add({
     targets: '#circle3',
-    translateX: { value: '-50%', duration: 0 },
-    translateY: { value: '-50%', duration: 0 },
-    scale: [0, 9],
-    duration: 500
-  })
-  .add({
-    targets: '#circle3',
-    scale: 1,
-    duration: 500,
-    delay: 700
-  })
-  .add({
-    targets: '#circle3',
-    scale: 1,
-    translateX: [0, 'calc(50vw - 4.8em)'],
-    translateY: '170%',
-    duration: 250
+    keyframes: [
+      { translateX: 0, translateY: 0, scale: [0, 9], duration: 500 },
+      { scale: 1, duration: 500, delay: 700 },
+      { translateX: 'calc(50vw - 4.8em)', translateY: '220%', duration: 250 }
+    ],
   })
   .add({
     targets: '#design',
@@ -99,21 +64,13 @@ anime({
 });
 
 //icons social media
-let t2 = anime.timeline({
+anime({
   easing: 'easeInOutExpo',
-  duration: 500
-});
-
-t2.add({
-  targets: '#icon1',
+  targets: '.social-icon',
   duration: 900,
   opacity: [0, 100],
-  translateX: [-100, 0]
-}).add({
-  targets: '#icon2',
-  duration: 900,
-  opacity: [0, 100],
-  translateX: [-100, 0]
+  translateX: [-100, 0],
+  delay: anime.stagger(100)
 });
 
 //corner-logo square to circle
@@ -152,8 +109,8 @@ const open = element => {
   target = targets[element];
   anime({
     targets: target.id,
-    scale: 50,
     translateX: { value: 'calc(50vw - 4.8em)', duration: 0 },
+    scale: 50,
     duration: 250,
     easing: 'easeInCirc'
   });
@@ -165,7 +122,7 @@ const open = element => {
     targets: target.icon + target.svgclass,
     strokeDashoffset: [anime.setDashoffset, 0],
     duration: 2200,
-    delay: (el, i) => i * 250,
+    delay: anime.stagger(250),
     easing: 'easeInCirc',
     loop: true,
     direction: 'alternate'
@@ -176,15 +133,15 @@ const open = element => {
     translateZ: 0,
     opacity: [0, 1],
     duration: 1200,
-    delay: (el, i) => 500 + 30 * i
+    delay: anime.stagger(30, { start: 500 })
   });
 };
 
 const close = () => {
   anime({
     targets: target.id,
-    scale: [50, 1],
     translateX: { value: 'calc(50vw - 4.8em)', duration: 0 },
+    scale: [50, 1],
     duration: 250,
     easing: 'easeOutCirc'
   });
@@ -193,6 +150,7 @@ const close = () => {
   document.querySelector('.close').style.display = 'none';
   document.querySelector(target.heading).style.display = 'none';
 };
+
 
 const icons = ['#camera', '#code', '#design'];
 icons.forEach((icon, index) => {
