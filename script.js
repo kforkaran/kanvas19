@@ -16,9 +16,8 @@ t1.add({
 })
   .add({
     targets: '#camera',
-    translateY: { value: '-50%', duration: 0 },
     opacity: 1,
-    translateX: [40, '-50%'],
+    translateX: [40, 0],
     duration: 250
   }) //circle2
   .add({
@@ -31,9 +30,8 @@ t1.add({
   })
   .add({
     targets: '#code',
-    translateY: { value: '-50%', duration: 0 },
     opacity: 1,
-    translateX: [40, '-50%'],
+    translateX: [40, 0],
     duration: 250
   }) //circle3
   .add({
@@ -46,15 +44,14 @@ t1.add({
   })
   .add({
     targets: '#design',
-    translateY: { value: '-50%', duration: 0 },
     opacity: 1,
-    translateX: [40, '-50%'],
+    translateX: [40, 0],
     duration: 250
   });
 
 //title
 anime({
-  targets: '#Title .y',
+  targets: '#title .y',
   strokeDashoffset: [anime.setDashoffset, 0],
   easing: 'easeInOutSine',
   duration: 1900,
@@ -114,7 +111,7 @@ const open = element => {
     duration: 250,
     easing: 'easeInCirc'
   });
-  document.getElementById('Title').style.display = 'none';
+  document.getElementById('title').style.display = 'none';
   document.querySelector('.close').style.display = 'block';
   document.querySelector(target.heading).style.display = 'block';
   document.querySelector(target.id).style.zIndex = '2';
@@ -130,7 +127,6 @@ const open = element => {
   anime({
     targets: target.heading + ' .letter',
     translateX: [40, 0],
-    translateZ: 0,
     opacity: [0, 1],
     duration: 1200,
     delay: anime.stagger(30, { start: 500 })
@@ -146,17 +142,13 @@ const close = () => {
     easing: 'easeOutCirc'
   });
   document.querySelector(target.id).style.zIndex = '0';
-  document.getElementById('Title').style.display = 'block';
+  document.getElementById('title').style.display = 'block';
   document.querySelector('.close').style.display = 'none';
   document.querySelector(target.heading).style.display = 'none';
 };
 
 
 const icons = ['#camera', '#code', '#design'];
-icons.forEach((icon, index) => {
-  document.querySelector(icon).onclick = () => {
-    open(index);
-  };
-});
+icons.forEach((icon, index) => document.querySelector(icon).onclick = () => open(index));
 
 document.querySelector('.close').onclick = close;
