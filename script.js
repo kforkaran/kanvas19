@@ -147,7 +147,12 @@ const close = () => {
   document.querySelector(target.heading).style.display = 'none';
 };
 
-document.querySelector('#camera').onclick = () => open(0);
-document.querySelector('#code').onclick = () => open(1);
-document.querySelector('#design').onclick = () => open(2);
+
+const icons = ['#camera', '#code', '#design'];
+icons.forEach((icon, index) => {
+  document.querySelector(icon).onclick = () => {
+    open(index);
+  };
+});
+
 document.querySelector('.close').onclick = close;
