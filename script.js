@@ -130,12 +130,9 @@ anime({
   elasticity: 600
 });
 
-//onclick circles
-
 //initially
 document.querySelector('.close').style.display = 'none';
 document.querySelector('.photography').style.display = 'none';
-
 
 const textWrapper = document.querySelector('.photography');
 textWrapper.innerHTML = textWrapper.textContent.replace(
@@ -171,7 +168,7 @@ const open = element => {
     delay: (el, i) => i * 250,
     easing: 'easeInCirc',
     loop: true,
-    direction: 'alternate',
+    direction: 'alternate'
   });
   anime({
     targets: target.heading + ' .letter',
@@ -179,7 +176,7 @@ const open = element => {
     translateZ: 0,
     opacity: [0, 1],
     duration: 1200,
-    delay: (el, i) => 500 + 30 * i,
+    delay: (el, i) => 500 + 30 * i
   });
 };
 
@@ -197,7 +194,13 @@ const close = () => {
   document.querySelector(target.heading).style.display = 'none';
 };
 
-document.querySelector('#circle1').onclick = function () { open(0); };
-document.querySelector('#circle2').onclick = function () { open(1); };
-document.querySelector('#circle3').onclick = function () { open(2); };
+document.querySelector('#camera').onclick = function() {
+  open(0);
+};
+document.querySelector('#code').onclick = function() {
+  open(1);
+};
+document.querySelector('#design').onclick = function() {
+  open(2);
+};
 document.querySelector('.close').onclick = close;
