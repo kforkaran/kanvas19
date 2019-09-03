@@ -73,26 +73,6 @@ if (window.innerWidth > 800) {
       translateX: [0, 'calc(50vw - 4.8em)'],
       translateY: '170%',
       duration: 250
-    }) //circle4
-    .add({
-      targets: '#circle4',
-      translateX: { value: '-50%', duration: 0 },
-      translateY: { value: '-50%', duration: 0 },
-      scale: [0, 9],
-      duration: 500
-    })
-    .add({
-      targets: '#circle4',
-      scale: 1,
-      duration: 500,
-      delay: 700
-    })
-    .add({
-      targets: '#circle4',
-      scale: 1,
-      translateX: [0, 'calc(50vw - 4.8em)'],
-      translateY: '280%',
-      duration: 250
     });
 } else {
   document.getElementById('circle1').innerHTML = 'Mobile';
@@ -103,7 +83,7 @@ anime({
   targets: '#Title .y',
   strokeDashoffset: [anime.setDashoffset, 0],
   easing: 'easeInOutSine',
-  duration: 2200,
+  duration: 1900,
   delay: function(el, i) {
     return i * 250;
   },
