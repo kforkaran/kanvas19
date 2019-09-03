@@ -4,55 +4,30 @@ body {
     overflow: hidden;
 }
 
-
-
-#circle1 {
-    width: 1px;
-    height: 1px;
+.circle {
+    width: 4em;
+    height: 4em;
     border-radius: 50%;
-    background-color: rgb(166, 57, 255);
     position: absolute;
     top: 50%;
     left: 50%;
-    z-index: 0;
     transform: translate(-50%, -50%);
+}
 
+#circle1 {
+    background-color: rgb(166, 57, 255);
 }
 
 #circle2 {
-    width: 1px;
-    height: 1px;
-    border-radius: 50%;
     background-color: rgb(255, 57, 74);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
 }
 
 #circle3 {
-    width: 1px;
-    height: 1px;
-    border-radius: 50%;
     background-color: rgb(105, 218, 111);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
 }
 
 #circle4 {
-    width: 1px;
-    height: 1px;
-    border-radius: 50%;
     background-color: rgb(252, 228, 123);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
 }
 
 .title {
@@ -60,13 +35,15 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-55%, -50%);
+    width: 50%;
+    white-space: pre;
     color: rgb(247, 234, 52);
 }
 
 .social-icons {
     position: absolute;
     top: 80%;
-    left: -5%;
+    left: 2%;
 }
 
 .icon {
@@ -98,18 +75,12 @@ body {
     z-index: 2;
 }
 
-#circle1 p {
+#camera {
+    width: 35px;
     position: relative;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#camera {
-    width: 35px;
-    position: absolute;
-    right: -40px;
-    top: 47.5%;
+    opacity: 0;
 }
 
 .ml12 {

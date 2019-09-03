@@ -9,80 +9,89 @@ if (window.innerWidth > 800) {
 
   t1.add({
       targets: '#circle1',
-      scale: 500,
+      translateX: { value: '-50%', duration: 0 },
+      translateY: { value: '-50%', duration: 0 },
+      scale: [0, 9],
       duration: 500
     })
     .add({
       targets: '#circle1',
-      scale: 60,
+      scale: 1,
       duration: 500,
       delay: 700
     })
     .add({
       targets: '#circle1',
-      scale: 60,
-      translateX: 11,
+      scale: 1,
+      translateX: [0, 'calc(50vw - 3.5em)'],
       duration: 250
     })
     .add({
       targets: '#camera',
-      translateX: -128,
+      translateY: { value: '-50%', duration: 0 },
+      opacity: 1,
+      translateX: [40, '-50%'],
       duration: 250
     })
     //circle2
     .add({
       targets: '#circle2',
-      scale: 500,
+      translateX: { value: '-50%', duration: 0 },
+      translateY: { value: '-50%', duration: 0 },
+      scale: [0, 9],
       duration: 500
     })
     .add({
       targets: '#circle2',
-      scale: 60,
+      scale: 1,
       duration: 500,
       delay: 700
     })
     .add({
       targets: '#circle2',
-      scale: 60,
-      translateX: 11,
-      translateY: 1.2,
+      scale: 1,
+      translateX: [0, 'calc(50vw - 3.5em)'],
+      translateY: '60%',
       duration: 250
     }) //circle3
-
     .add({
       targets: '#circle3',
-      scale: 500,
+      translateX: { value: '-50%', duration: 0 },
+      translateY: { value: '-50%', duration: 0 },
+      scale: [0, 9],
       duration: 500
     })
     .add({
       targets: '#circle3',
-      scale: 60,
+      scale: 1,
       duration: 500,
       delay: 700
     })
     .add({
       targets: '#circle3',
-      scale: 60,
-      translateX: 11,
-      translateY: 2.4,
+      scale: 1,
+      translateX: [0, 'calc(50vw - 3.5em)'],
+      translateY: '170%',
       duration: 250
     }) //circle4
     .add({
       targets: '#circle4',
-      scale: 500,
+      translateX: { value: '-50%', duration: 0 },
+      translateY: { value: '-50%', duration: 0 },
+      scale: [0, 9],
       duration: 500
     })
     .add({
       targets: '#circle4',
-      scale: 60,
+      scale: 1,
       duration: 500,
       delay: 700
     })
     .add({
       targets: '#circle4',
-      scale: 60,
-      translateX: 11,
-      translateY: 3.6,
+      scale: 1,
+      translateX: [0, 'calc(50vw - 3.5em)'],
+      translateY: '280%',
       duration: 250
     })
 
@@ -113,12 +122,12 @@ t2.add({
   targets: '#icon1',
   duration: 900,
   opacity: [0, 100],
-  translateX: 100
+  translateX: [-100, 0]
 }).add({
   targets: '#icon2',
   duration: 900,
   opacity: [0, 100],
-  translateX: 100
+  translateX: [-100, 0]
 });
 
 //corner-logo
@@ -138,36 +147,6 @@ anime({
 //onclick circles
 
 document.querySelector('.close').style.display = 'none';
-let zoom1 = anime({
-  targets: '#circle1',
-  scale: 2000,
-  duration: 250,
-  autoplay: false
-});
-
-let zoomOut = anime({
-  targets: '#circle1',
-  scale: 60,
-  translateX: 11,
-  duration: 250,
-  autoplay: false
-})
-
-const cameraZoom = anime({
-  targets: '#camera',
-  scale: 40,
-  translateX: -11,
-  translateY: -2.4,
-  duration: 250,
-  autoplay: false
-})
-const cameraOffZoom = anime({
-  targets: '#camera',
-  scale: 1,
-  translateX: -128,
-  duration: 250,
-  autoplay: false
-})
 
 const cameraStroke = anime({
   targets: '#camera .p',
@@ -192,26 +171,33 @@ const cameraContent = anime({
   duration: 1200,
   delay: (el, i) => 500 + 30 * i,
   autoplay: false
-})
+});
 
 document.querySelector('.ml12').style.display = 'none';
 document.querySelector('#camera').onclick = () => {
-  zoom1.play();
-  console.log('hgh')
+  anime({
+    targets: '#circle1',
+    scale: 20,
+    translateX: { value: 'calc(50vw - 3.5em)', duration: 0 },
+    duration: 1000,
+  });
   document.getElementById('Title').style.display = 'none';
-  document.querySelector('#camera').style.fill = 'rgba(0,0,0,0)'
+  document.querySelector('#camera').style.fill = 'rgba(0,0,0,0)';
   document.querySelector('.close').style.display = 'block';
   document.querySelector('.ml12').style.display = 'block';
-  cameraZoom.play();
   cameraStroke.play();
   cameraContent.play();
-
 };
 
+
 document.querySelector('.close').onclick = () => {
-  zoomOut.play();
+  anime({
+    targets: '#circle1',
+    scale: [50, 1],
+    translateX: { value: 'calc(50vw - 3.5em)', duration: 0 },
+    duration: 1000,
+  });
   document.getElementById('Title').style.display = 'block';
   document.querySelector('.close').style.display = 'none';
   document.querySelector('.ml12').style.display = 'none';
-  cameraOffZoom.play();
-}
+};
