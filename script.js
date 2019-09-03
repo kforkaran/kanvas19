@@ -149,10 +149,6 @@ const close = () => {
 
 
 const icons = ['#camera', '#code', '#design'];
-icons.forEach((icon, index) => {
-  document.querySelector(icon).onclick = () => {
-    open(index);
-  };
-});
+icons.forEach((icon, index) => document.querySelector(icon).onclick = () => open(index));
 
 document.querySelector('.close').onclick = close;
