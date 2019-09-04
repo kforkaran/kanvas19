@@ -1,6 +1,18 @@
 import anime from 'animejs/lib/anime.es';
 import './style.css';
 
+let circle = [];
+
+if(window.innerHeight < window.innerWidth) {
+  circle[0] = { x: 'calc(50vw - 4.8em)', y: 0 };
+  circle[1] = { x: 'calc(50vw - 4.8em)', y: '110%' };
+  circle[2] = { x: 'calc(50vw - 4.8em)', y: '220%' };
+} else {
+  circle[0] = { x: '-110%', y: '20vh' };
+  circle[1] = { x: 0, y: '20vh' };
+  circle[2] = { x: '110%', y: '20vh' };
+}
+
 let t1 = anime.timeline({
   easing: 'easeInOutSine',
   duration: 1250
@@ -11,7 +23,7 @@ t1.add({
   keyframes: [
     { translateX: 0, translateY: 0, scale: [0, 9], duration: 500 },
     { scale: 1, duration: 500, delay: 700 },
-    { translateX: 'calc(50vw - 4.8em)', duration: 250 }
+    { translateX: circle[0].x, translateY: circle[0].y, duration: 250 }
   ],
 })
   .add({
@@ -25,7 +37,7 @@ t1.add({
     keyframes: [
       { translateX: 0, translateY: 0, scale: [0, 9], duration: 500 },
       { scale: 1, duration: 500, delay: 700 },
-      { translateX: 'calc(50vw - 4.8em)', translateY: '110%', duration: 250 }
+      { translateX: circle[1].x, translateY: circle[1].y, duration: 250 }
     ],
   })
   .add({
@@ -39,7 +51,7 @@ t1.add({
     keyframes: [
       { translateX: 0, translateY: 0, scale: [0, 9], duration: 500 },
       { scale: 1, duration: 500, delay: 700 },
-      { translateX: 'calc(50vw - 4.8em)', translateY: '220%', duration: 250 }
+      { translateX: circle[2].x, translateY: circle[2].y, duration: 250 }
     ],
   })
   .add({
@@ -102,11 +114,12 @@ const targets = [
 
 let target;
 
-const open = element => {
-  target = targets[element];
+const open = index => {
+  target = targets[index];
   anime({
     targets: target.id,
-    translateX: { value: 'calc(50vw - 4.8em)', duration: 0 },
+    translateX: { value: circle[index].x, duration: 0 },
+    translateY: { value: circle[index].y, duration: 0 },
     scale: 50,
     duration: 250,
     easing: 'easeInCirc'
@@ -136,7 +149,8 @@ const open = element => {
 const close = () => {
   anime({
     targets: target.id,
-    translateX: { value: 'calc(50vw - 4.8em)', duration: 0 },
+    translateX: { value: circle[target.id.charAt(7) - 1].x, duration: 0 },
+    translateY: { value: circle[target.id.charAt(7) - 1].y, duration: 0 },
     scale: [50, 1],
     duration: 250,
     easing: 'easeOutCirc'
@@ -148,7 +162,7 @@ const close = () => {
 };
 
 
-const icons = ['#camera', '#code', '#design'];
+const icons = ['#circle1', '#circle2', '#circle3'];
 icons.forEach((icon, index) => document.querySelector(icon).onclick = () => open(index));
 
 document.querySelector('.close').onclick = close;
