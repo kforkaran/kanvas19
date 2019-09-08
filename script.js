@@ -26,7 +26,7 @@ t1.add({
   ]
 })
   .add({
-    targets: '#camera',
+    targets: '#camera-svg',
     opacity: 1,
     translateX: [40, 0],
     duration: 250
@@ -40,7 +40,7 @@ t1.add({
     ]
   })
   .add({
-    targets: '#code',
+    targets: '#code-svg',
     opacity: 1,
     translateX: [40, 0],
     duration: 250
@@ -54,7 +54,7 @@ t1.add({
     ]
   })
   .add({
-    targets: '#design',
+    targets: '#design-svg',
     opacity: 1,
     translateX: [40, 0],
     duration: 250
@@ -96,19 +96,18 @@ anime({
 });
 
 //initially
-document.querySelector('.close').style.display = 'none';
-document.querySelector('.photography').style.display = 'none';
 
-const textWrapper = document.querySelector('.photography');
-textWrapper.innerHTML = textWrapper.textContent.replace(
-  /\S/g,
-  "<span class='letter'>$&</span>"
-);
+const textWrapper = document.querySelectorAll('.heading');
+for (let i = 0; i < textWrapper.length; i++)
+  textWrapper[i].innerHTML = textWrapper[i].textContent.replace(
+    /\S/g,
+    "<span class='letter'>$&</span>"
+  );
 
 const targets = [
-  { id: '#circle1', icon: '#camera', heading: '.photography', svgclass: ' .p' },
-  { id: '#circle2', icon: '#code', heading: '.photography', svgclass: ' .q' },
-  { id: '#circle3', icon: '#design', heading: '.photography', svgclass: ' .a' }
+  { id: '#circle1', icon: '#camera', div: '#photography', svgclass: ' .p' },
+  { id: '#circle2', icon: '#code', div: '#code', svgclass: ' .q' },
+  { id: '#circle3', icon: '#design', div: '#design', svgclass: ' .a' }
 ];
 
 let target;
@@ -125,7 +124,7 @@ const open = index => {
   });
   document.getElementById('title').style.display = 'none';
   document.querySelector('.close').style.display = 'block';
-  document.querySelector(target.heading).style.display = 'block';
+  document.querySelector(target.div).style.display = 'block';
   document.querySelector(target.id).style.zIndex = '2';
   anime({
     targets: target.icon + target.svgclass,
@@ -137,7 +136,7 @@ const open = index => {
     direction: 'alternate'
   });
   anime({
-    targets: target.heading + ' .letter',
+    targets: target.div + ' .heading .letter',
     translateX: [40, 0],
     opacity: [0, 1],
     duration: 1200,
@@ -167,7 +166,7 @@ const close = () => {
   document.querySelector(target.id).style.zIndex = '0';
   document.getElementById('title').style.display = 'block';
   document.querySelector('.close').style.display = 'none';
-  document.querySelector(target.heading).style.display = 'none';
+  document.querySelector(target.div).style.display = 'none';
   if (window.innerWidth < 800) {
     anime({
       targets: target.icon,
