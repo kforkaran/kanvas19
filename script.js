@@ -1,15 +1,30 @@
-import anime from 'animejs/lib/anime.es';
-import './style.css';
-
 let circle = [];
 if (window.innerHeight < window.innerWidth) {
-  circle[0] = { x: 'calc(50vw - 4.8em)', y: 0 };
-  circle[1] = { x: 'calc(50vw - 4.8em)', y: '110%' };
-  circle[2] = { x: 'calc(50vw - 4.8em)', y: '220%' };
+  circle[0] = {
+    x: 'calc(50vw - 4.8em)',
+    y: 0
+  };
+  circle[1] = {
+    x: 'calc(50vw - 4.8em)',
+    y: '110%'
+  };
+  circle[2] = {
+    x: 'calc(50vw - 4.8em)',
+    y: '220%'
+  };
 } else {
-  circle[0] = { x: '-110%', y: '20vh' };
-  circle[1] = { x: 0, y: '20vh' };
-  circle[2] = { x: '110%', y: '20vh' };
+  circle[0] = {
+    x: '-110%',
+    y: '20vh'
+  };
+  circle[1] = {
+    x: 0,
+    y: '20vh'
+  };
+  circle[2] = {
+    x: '110%',
+    y: '20vh'
+  };
 }
 
 let t1 = anime.timeline({
@@ -18,13 +33,25 @@ let t1 = anime.timeline({
 });
 
 t1.add({
-  targets: '#circle1',
-  keyframes: [
-    { translateX: 0, translateY: 0, scale: [0, 9], duration: 500 },
-    { scale: 1, duration: 500, delay: 700 },
-    { translateX: circle[0].x, translateY: circle[0].y, duration: 250 }
-  ]
-})
+    targets: '#circle1',
+    keyframes: [{
+        translateX: 0,
+        translateY: 0,
+        scale: [0, 9],
+        duration: 500
+      },
+      {
+        scale: 1,
+        duration: 500,
+        delay: 700
+      },
+      {
+        translateX: circle[0].x,
+        translateY: circle[0].y,
+        duration: 250
+      }
+    ]
+  })
   .add({
     targets: '#camera-svg',
     opacity: 1,
@@ -33,10 +60,22 @@ t1.add({
   }) //circle2
   .add({
     targets: '#circle2',
-    keyframes: [
-      { translateX: 0, translateY: 0, scale: [0, 9], duration: 500 },
-      { scale: 1, duration: 500, delay: 700 },
-      { translateX: circle[1].x, translateY: circle[1].y, duration: 250 }
+    keyframes: [{
+        translateX: 0,
+        translateY: 0,
+        scale: [0, 9],
+        duration: 500
+      },
+      {
+        scale: 1,
+        duration: 500,
+        delay: 700
+      },
+      {
+        translateX: circle[1].x,
+        translateY: circle[1].y,
+        duration: 250
+      }
     ]
   })
   .add({
@@ -47,10 +86,22 @@ t1.add({
   }) //circle3
   .add({
     targets: '#circle3',
-    keyframes: [
-      { translateX: 0, translateY: 0, scale: [0, 9], duration: 500 },
-      { scale: 1, duration: 500, delay: 700 },
-      { translateX: circle[2].x, translateY: circle[2].y, duration: 250 }
+    keyframes: [{
+        translateX: 0,
+        translateY: 0,
+        scale: [0, 9],
+        duration: 500
+      },
+      {
+        scale: 1,
+        duration: 500,
+        delay: 700
+      },
+      {
+        translateX: circle[2].x,
+        translateY: circle[2].y,
+        duration: 250
+      }
     ]
   })
   .add({
@@ -104,6 +155,7 @@ for (let i = 0; i < textWrapper.length; i++)
     "<span class='letter'>$&</span>"
   );
 
+
 const targets = [
   { id: '#circle1', icon: '#camera', div: '#photography', svgclass: ' .p' },
   { id: '#circle2', icon: '#code', div: '#code', svgclass: ' .q' },
@@ -116,9 +168,15 @@ const open = index => {
   target = targets[index];
   anime({
     targets: target.id,
-    translateX: { value: circle[index].x, duration: 0 },
-    translateY: { value: circle[index].y, duration: 0 },
-    scale: 50,
+    translateX: {
+      value: circle[index].x,
+      duration: 0
+    },
+    translateY: {
+      value: circle[index].y,
+      duration: 0
+    },
+    scale: 55,
     duration: 250,
     easing: 'easeInCirc'
   });
@@ -140,7 +198,9 @@ const open = index => {
     translateX: [40, 0],
     opacity: [0, 1],
     duration: 1200,
-    delay: anime.stagger(30, { start: 500 })
+    delay: anime.stagger(30, {
+      start: 500
+    })
   });
 
   if (window.innerWidth < 800) {
@@ -157,8 +217,14 @@ const open = index => {
 const close = () => {
   anime({
     targets: target.id,
-    translateX: { value: circle[target.id.charAt(7) - 1].x, duration: 0 },
-    translateY: { value: circle[target.id.charAt(7) - 1].y, duration: 0 },
+    translateX: {
+      value: circle[target.id.charAt(7) - 1].x,
+      duration: 0
+    },
+    translateY: {
+      value: circle[target.id.charAt(7) - 1].y,
+      duration: 0
+    },
     scale: [50, 1],
     duration: 250,
     easing: 'easeOutCirc'
