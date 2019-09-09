@@ -155,6 +155,15 @@ const open = index => {
 };
 
 const close = () => {
+  if (window.innerWidth < 800) {
+    anime({
+      targets: target.icon,
+      translateX: [40, 0],
+      translateY: [50, 0],
+      scale: 1,
+      duration: 200
+    });
+  }
   anime({
     targets: target.id,
     translateX: { value: circle[target.id.charAt(7) - 1].x, duration: 0 },
@@ -167,14 +176,6 @@ const close = () => {
   document.getElementById('title').style.display = 'block';
   document.querySelector('.close').style.display = 'none';
   document.querySelector(target.div).style.display = 'none';
-  if (window.innerWidth < 800) {
-    anime({
-      targets: target.icon,
-      translateX: [40, 0],
-      scale: 1,
-      duration: 200
-    });
-  }
 };
 
 const icons = ['#circle1', '#circle2', '#circle3'];
