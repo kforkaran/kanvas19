@@ -1,8 +1,7 @@
 module.exports = {
   entry: "./script.js",
   output: {
-    filename: "script.bundle.js",
-    path: __dirname
+    filename: "script.bundle.js"
   },
   module: {
     rules: [{
@@ -21,5 +20,5 @@ module.exports = {
       }
     ]
   },
-  mode: "production"
+  mode: "development"
 };
