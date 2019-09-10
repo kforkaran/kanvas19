@@ -182,6 +182,14 @@ let target;
 let open_flag = 0;
 const open = index => {
   open_flag = 1;
+  anime({
+    easing: 'easeInOutExpo',
+    targets: '.social-icon',
+    duration: 900,
+    opacity: [100, 0],
+    translateX: [0, -100],
+    delay: anime.stagger(100)
+  });
   target = targets[index];
   anime({
     targets: target.id,
@@ -233,6 +241,14 @@ const open = index => {
 
 const close = () => {
   open_flag = 0;
+  anime({
+    easing: 'easeInOutExpo',
+    targets: '.social-icon',
+    duration: 900,
+    opacity: [0, 100],
+    translateX: [-100, 0],
+    delay: anime.stagger(100)
+  });
   if (window.innerWidth < 800) {
     anime({
       targets: target.icon,
